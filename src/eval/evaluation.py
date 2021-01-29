@@ -27,10 +27,11 @@ class Evaluator(object):
     def writebrackets(fname, brackets):
         """ Write the bracketing results into file"""
         with open(fname, 'w') as fout:
+            print("Writing to ", fname)
             for item in brackets:
                 fout.write(str(item) + '\n')
                 
-    def eval_parser(self, dev_data=None, path='./examples', save_preds=False, use_parseval=False):
+    def eval_parser(self, dev_data=None, path='./examples', save_preds=True, use_parseval=False):
         """ Test the parsing performance"""
         # Evaluation
         met = Metrics(levels=['span', 'nuclearity', 'relation'], use_parseval=use_parseval)
@@ -73,7 +74,7 @@ class Evaluator(object):
 
                 fbrackets = eval_instance.replace('.out.merge', '.brackets') \
                                 .replace("wsj", self.config[MODEL_NAME] + "_wsj") \
-                                .replace("data_dir/train_dir", "predicted_trees")
+                                .replace("test_dir", "predicted_trees")
 
                 pred_brackets = pred_rst.bracketing()
                 # Write brackets into file
