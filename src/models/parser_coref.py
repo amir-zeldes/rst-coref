@@ -28,7 +28,7 @@ class NeuralRstParserCoref(object):
         self.coref_trainer = coref_trainer
         if self.config[MODEL_TYPE] in [2, 3]:
             self.clf.bert = self.coref_trainer.model.encoder.bert
-        self.loss = CrossEntropyLoss(reduction='mean')
+        self.loss = CrossEntropyLoss(reduction='mean').to(config[DEVICE])
         self.optim = None
         
         
@@ -100,12 +100,12 @@ class NeuralRstParserCoref(object):
         
         # Compute action loss
         action_probs, rel_probs = self.clf.decode_action_coref(span_embeds, action_feats)
-        cost = self.loss(action_probs, all_actions)
+        cost = self.loss(action_probs.to(self.config[DEVICE]), all_actions.to(self.config[DEVICE]))
         
         # Compute relation loss
         rel_probs, rel_labels = rel_probs[rel_mask], all_relations[rel_mask]
         if rel_labels.shape[0] > 0:
-            cost += self.loss(rel_probs, rel_labels)
+            cost += self.loss(rel_probs.to(self.config[DEVICE]), rel_labels.to(self.config[DEVICE]))
         
         # Update the model
         cost.backward()
