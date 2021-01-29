@@ -317,8 +317,7 @@ class NeuralClassifier(nn.Module):
             
     def add_action_feats(self, node_edus, action_feats):
         feat_vector = []
-        trueTensor, falseTensor = torch.LongTensor([1]).to(self.config[DEVICE]), 
-                                    torch.LongTensor([0]).to(self.config[DEVICE])
+        trueTensor, falseTensor = torch.LongTensor([1]).to(self.config[DEVICE]), torch.LongTensor([0]).to(self.config[DEVICE])
 
         for i, feature in enumerate(action_feats):
             if len(feature) == 3:
