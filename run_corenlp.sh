@@ -14,6 +14,6 @@ for FNAME in $PATH/*
 do
     if [[ "$FNAME" == *text ]]
     then
-        /usr/bin/java -Xmx40g -cp "$scriptdir/*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse -file $FNAME -outputDirectory $PATH -outputExtension '.xml' -timeout 120000
+        /usr/bin/java -Xmx40g -cp "$scriptdir/*" edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse -file $FNAME -outputDirectory $PATH -outputExtension '.xml' -timeout 120000 -outputFormat xml
     fi
 done
