@@ -36,7 +36,8 @@ class Evaluator(object):
         met = Metrics(levels=['span', 'nuclearity', 'relation'], use_parseval=use_parseval)
         # ----------------------------------------
         # Read all files from the given path
-        dev_data = [os.path.join(path, fname) for fname in os.listdir(path) if fname.endswith('.dis')]
+        if dev_data is None:
+            dev_data = [os.path.join(path, fname) for fname in os.listdir(path) if fname.endswith('.dis')]
         total_cost = 0
         for eval_instance in dev_data:
             # ----------------------------------------
