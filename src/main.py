@@ -29,7 +29,7 @@ def parse_args():
                         help='whether to do evaluation')
     parser.add_argument('--train_dir', help='train data directory')
     parser.add_argument('--eval_dir', help='eval data directory')
-    parser.add_argument('--model_type', help='baseline/coref_feats/multitask/multitask-plain - 0/1/2/3')
+    parser.add_argument('--model_type', help='baseline/coref_feats/multitask/multitask-plain - 0/1/2/3', default=0)
     parser.add_argument('--model_name', help='Name of the model')
     parser.add_argument('--pretrained_coref_path', help='Path to the pretrained coref model')
     parser.add_argument('--use_parseval', help='Whether or not to use original Parseval instead of RST-Parseval', action='store_true')
@@ -63,7 +63,7 @@ def get_coref_resolver(config):
             val_corpus = pickle.load(open('../data/val_corpus_' + str(max_segment_len) + '.pkl', 'rb'))
             test_corpus = pickle.load(open('../data/test_corpus_' + str(max_segment_len) + '.pkl', 'rb'))
             coref_trainer = Trainer(coref_model, train_corpus, val_corpus, 
-                                    test_corpus, debug=False, config[PRETRAINED_COREF_PATH])
+                                    test_corpus, debug=False, pretrained_path=config[PRETRAINED_COREF_PATH])
         else:
             coref_trainer = Trainer(coref_model, [], [], [], debug=False)
     else:
@@ -113,7 +113,8 @@ if __name__ == '__main__':
     
     if args.prepare:
         # Create training data
-        coref_model = CorefScore(higher_order=True).to(config[DEVICE])
+        #coref_model = CorefScore(higher_order=True).to(config[DEVICE])
+        coref_model = CorefScore().to(config[DEVICE])
         
         coref_trainer = Trainer(coref_model, [], [], [], debug=False)
         
@@ -132,4 +133,4 @@ if __name__ == '__main__':
         print("Evaluating")
         with torch.no_grad():
             evaluator = Evaluator(parser, data_helper, config)
-            evaluator.eval_parser(None, path=args.eval_dir, args.use_parseval)
+            evaluator.eval_parser(None, path=args.eval_dir, use_parseval=args.use_parseval)
