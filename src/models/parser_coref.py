@@ -155,8 +155,11 @@ class NeuralRstParserCoref(object):
                 all_rel_probs.append(rel_probs.squeeze())
                 pred_rel_idx = int(sorted_rel_idx[0, 0])
                 pred_rel = xidx_relation_map[pred_rel_idx]
-            assert not (pred_action == "Reduce" and pred_rel is None)
-            
+            #assert not (pred_action == "Reduce" and pred_rel is None)
+            if (pred_action == "Reduce" and pred_rel is None):
+                print("Warning: got a Reduce with a None relation. Replacing with Elaboration")
+                pred_rel = "Elaboration"
+
             predictions = (pred_action, pred_nuc, pred_rel)
             conf.operate(predictions)
             
