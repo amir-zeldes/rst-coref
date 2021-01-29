@@ -99,10 +99,10 @@ if __name__ == '__main__':
         OP_FEATS: False,
         ORG_FEATS: True,
         HIDDEN_DIM: 512,
-        BATCH_SIZE: 5,
+        BATCH_SIZE: 1,
         DEVICE: "cuda:0",
         KEEP_BOUNDARIES: False,
-        DO_COREF: True,
+        DO_COREF: False,
         MODEL_TYPE: int(args.model_type),
         MODEL_NAME: args.model_name,
         PRETRAINED_COREF_PATH: args.pretrained_coref_path
