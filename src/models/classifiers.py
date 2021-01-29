@@ -176,7 +176,7 @@ class NeuralClassifier(nn.Module):
 
             # Extract span summaries 
             for span in const_spans:
-                nuc_edu = span[2]
+                nuc_edu = span[1]
                 # EDU ids start with 1
                 edu_idx = nuc_edu[0] - 1
                 span_start, span_end = sent2token[edu_idx]
