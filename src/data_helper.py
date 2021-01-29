@@ -31,7 +31,6 @@ class DataHelper(object):
         
         print("Generating features")
         for i, rst_tree in enumerate(self.read_rst_trees(data_dir=data_dir)):
-            
             feats, actions, relations = rst_tree.generate_action_relation_samples(config)
             fdis = feats[0][0]
             
@@ -63,8 +62,8 @@ class DataHelper(object):
             if i % 50 == 0:
                 print("Processed ", i + 1, " trees")
                 
-        actions_numeric = [action_map[x] for x in actions_numeric]
-        relations_numeric = [relation_map[x] for x in relations_numeric]
+        all_actions_numeric = [action_map[x] for x in all_actions_numeric]
+        all_relations_numeric = [relation_map[x] for x in all_relations_numeric]
         
         # Stratify by number of EDUs in the document
         stratified = get_stratify_classes([len(coref_document.edu_dict) for coref_document in self.docs])
@@ -84,7 +83,7 @@ class DataHelper(object):
         # Pre-generate clusters for all docs (to speed up training)
         with torch.no_grad():
             for i, doc in enumerate(self.docs):
-                self.all_clusters.append(coref_trainer.predict_rst(doc)[0])
+                self.all_clusters.append(coref_trainer.predict_clusters(doc)[0])
                 print("Coref cluster for document: ", i)
             
     def save_data_helper(self, fname):
