@@ -33,6 +33,7 @@ class RstTree(object):
         """
         with open(self.fdis) as fin:
             text = fin.read()
+            print(f"Processing {self.fdis}")
         # Build RST as annotation
         self.tree = RstTree.build_tree(text)
         # Binarize it
