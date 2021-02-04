@@ -110,7 +110,7 @@ if __name__ == '__main__':
     }
     
     data_helper = DataHelper()    
-    helper_name = "data_helper_rst.bin"
+    helper_name = f"{config[MODEL_NAME]}_data_helper_rst.bin"
     helper_path = os.path.join('../data/', helper_name)
     
     if args.prepare:
