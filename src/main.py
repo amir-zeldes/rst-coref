@@ -84,8 +84,8 @@ def get_discourse_parser(data_helper, config):
 def train_model_coref(data_helper, config):
     
     helper_name = "data_helper_rst.bin"
-    #data_helper.load_data_helper(os.path.join('../data/', helper_name))
-    data_helper = None
+    data_helper.load_data_helper(os.path.join('../data/', helper_name))
+    # data_helper = None
     train_loader = get_train_loader(data_helper, config)
 
     os.makedirs('../data/model/', exist_ok=True)
@@ -109,8 +109,9 @@ if __name__ == '__main__':
         PRETRAINED_COREF_PATH: args.pretrained_coref_path
     }
     
-    data_helper = DataHelper()    
-    helper_name = f"{config[MODEL_NAME]}_data_helper_rst.bin"
+    data_helper = DataHelper()
+    helper_name = "data_helper_rst.bin"
+    # helper_name = f"{config[MODEL_NAME]}_data_helper_rst.bin"
     helper_path = os.path.join('../data/', helper_name)
     
     if args.prepare:
