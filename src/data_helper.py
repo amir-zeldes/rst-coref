@@ -63,7 +63,7 @@ class DataHelper(object):
                 print("Processed ", i + 1, " trees")
                 
         all_actions_numeric = [action_map[x] for x in all_actions_numeric]
-        all_relations_numeric = [relation_map[x] for x in all_relations_numeric]
+        all_relations_numeric = [relation_map[x if x is None else x.lower()] for x in all_relations_numeric]
         
         # Stratify by number of EDUs in the document
         stratified = get_stratify_classes([len(coref_document.edu_dict) for coref_document in self.docs])

@@ -95,11 +95,12 @@ class2rel = {
 
 val_trees = ['../data/data_dir/train_dir/wsj_1141.out.dis', '../data/data_dir/train_dir/wsj_1320.out.dis', '../data/data_dir/train_dir/wsj_2341.out.dis', '../data/data_dir/train_dir/wsj_1184.out.dis', '../data/data_dir/train_dir/wsj_0600.out.dis', '../data/data_dir/train_dir/wsj_0626.out.dis', '../data/data_dir/train_dir/wsj_2348.out.dis', '../data/data_dir/train_dir/wsj_1100.out.dis', '../data/data_dir/train_dir/wsj_2381.out.dis', '../data/data_dir/train_dir/wsj_0628.out.dis', '../data/data_dir/train_dir/wsj_1344.out.dis', '../data/data_dir/train_dir/wsj_1111.out.dis', '../data/data_dir/train_dir/wsj_0620.out.dis', '../data/data_dir/train_dir/wsj_1196.out.dis', '../data/data_dir/train_dir/wsj_1151.out.dis', '../data/data_dir/train_dir/wsj_2343.out.dis', '../data/data_dir/train_dir/wsj_0631.out.dis', '../data/data_dir/train_dir/wsj_1150.out.dis', '../data/data_dir/train_dir/wsj_2327.out.dis', '../data/data_dir/train_dir/wsj_1180.out.dis', '../data/data_dir/train_dir/wsj_1161.out.dis', '../data/data_dir/train_dir/wsj_1318.out.dis', '../data/data_dir/train_dir/wsj_1997.out.dis', '../data/data_dir/train_dir/wsj_1355.out.dis', '../data/data_dir/train_dir/wsj_2322.out.dis', '../data/data_dir/train_dir/wsj_1104.out.dis', '../data/data_dir/train_dir/wsj_1392.out.dis', '../data/data_dir/train_dir/wsj_1992.out.dis', '../data/data_dir/train_dir/wsj_1168.out.dis', '../data/data_dir/train_dir/wsj_1379.out.dis', '../data/data_dir/train_dir/wsj_1303.out.dis', '../data/data_dir/train_dir/wsj_2321.out.dis', '../data/data_dir/train_dir/wsj_2325.out.dis', '../data/data_dir/train_dir/wsj_0633.out.dis', '../data/data_dir/train_dir/wsj_1375.out.dis']
 
-relation_map = {None: 0, 'Elaboration': 1, 'Same-Unit': 2, 'Attribution': 3, 'Contrast': 4, 'Cause': 5, 'Enablement': 6,
-                'Explanation': 7, 'Evaluation': 8, 'Temporal': 9, 'Manner-Means': 10, 'Joint': 11, 'Topic-Change': 12,
-                'Background': 13, 'Condition': 14, 'Comparison': 15, 'Summary': 16, 'Topic-Comment': 17,
-                'Textual-Organization': 18, "Justify": 19, "Motivation": 20, "Preparation": 21, "Question": 22,
-                "Solutionhood": 23, }
+relation_map = {None: 0, 'elaboration': 1, 'same-unit': 2, 'attribution': 3, 'contrast': 4, 'cause': 5, 'enablement': 6,
+                'explanation': 7, 'evaluation': 8, 'temporal': 9, 'manner-means': 10, 'joint': 11, 'topic-change': 12,
+                'background': 13, 'condition': 14, 'comparison': 15, 'summary': 16, 'topic-comment': 17,
+                'textual-organization': 18, "justify": 19, "motivation": 20, "preparation": 21, "question": 22,
+                "solutionhood": 23, "sequence": 24, "restatement": 25, "evidence": 26, "concession": 27, 
+                "circumstance": 28, "antithesis": 29, "result": 30, "purpose": 31, "manner": 32, "means": 33, "span": 34}
 
 action_map = {('Shift', None): 0, ('Reduce', 'NS'): 1, ('Reduce', 'NN'): 2, ('Reduce', 'SN'): 3}
 
