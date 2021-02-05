@@ -408,8 +408,9 @@ class RstTree(object):
     def extract_relation(s, level=0):
         """ Extract discourse relation on different level
         """
-        # return rel2class[s.lower()]
-        return s
+        if s.lower() in rel2class:
+            return rel2class[s.lower()]
+        return s.lower()
 
     def bracketing(self):
         """ brackets according an Binary RST tree
