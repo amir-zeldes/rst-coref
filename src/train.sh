@@ -1,3 +1,4 @@
+#!/bin/bash
 python main.py \
 	--train \
 	--model_name "test_model.pt" \

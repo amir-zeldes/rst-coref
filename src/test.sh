@@ -1,3 +1,4 @@
+#!/bin/bash
 python main.py \
 	--eval \
 	--eval_dir "../data/test_dir/" \

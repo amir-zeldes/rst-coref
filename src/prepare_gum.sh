@@ -1,3 +1,4 @@
+#!/bin/bash
 python main.py \
 	--prepare \
 	--train_dir ../data/gum_train \
