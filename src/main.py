@@ -117,11 +117,11 @@ if __name__ == '__main__':
     if args.prepare:
         # Create training data
         #coref_model = CorefScore(higher_order=True).to(config[DEVICE])
-        #coref_model = CorefScore().to(config[DEVICE])
+        coref_model = CorefScore().to(config[DEVICE])
         
-        #coref_trainer = Trainer(coref_model, [], [], [], debug=False)
+        coref_trainer = Trainer(coref_model, [], [], [], debug=False)
         
-        data_helper.create_data_helper(args.train_dir, config, None)
+        data_helper.create_data_helper(args.train_dir, config, coref_trainer)
         data_helper.save_data_helper(helper_path)
             
     if args.train:
