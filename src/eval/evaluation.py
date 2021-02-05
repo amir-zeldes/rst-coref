@@ -62,7 +62,7 @@ class Evaluator(object):
             gold_action_seq, gold_rel_seq = gold_rst.decode_rst_tree()
             
             gold_action_seq = [action_map[x] for x in gold_action_seq]
-            gold_relation_seq = [relation_map[x] for x in gold_rel_seq if x is not None]
+            gold_relation_seq = [relation_map[x.lower()] for x in gold_rel_seq if x is not None]
             pred_rst, cost = self.parser.sr_parse(doc, 
                                                  torch.cuda.LongTensor(gold_action_seq),
                                                  torch.cuda.LongTensor(gold_relation_seq))
