@@ -35,12 +35,12 @@ class Doc(object):
                 gidx += 1
         fedus = fmerge.replace(".merge", ".edus")
         self.doc_edus = []
-        #with open(fedus, 'r') as fin:
-        #    for line in fin:
-        #        line = line.strip()
-        #        if len(line) == 0:
-        #            continue
-        #        self.doc_edus.append(line)
+        with open(fedus, 'r') as fin:
+            for line in fin:
+                line = line.strip()
+                if len(line) == 0:
+                    continue
+                self.doc_edus.append(line)
         # Get EDUs from tokendict
         self.edu_dict = self._recover_edus(self.token_dict)
 

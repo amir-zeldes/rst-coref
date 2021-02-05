@@ -40,7 +40,7 @@ def collate_samples(data_helper, sample_list):
         all_neural_feats.append(feats[1][1])
         all_actions.append(action[0])
         all_relations.append(action[1])
-    all_clusters = [data_helper.all_clusters[i] for i in all_indexes]
+    all_clusters = [] # [data_helper.all_clusters[i] for i in all_indexes]
     all_actions, all_relations = torch.stack(all_actions), torch.stack(all_relations)
     return all_docs, all_clusters, \
            all_action_feats, all_neural_feats, \
