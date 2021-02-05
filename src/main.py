@@ -85,7 +85,6 @@ def train_model_coref(data_helper, config):
     
     helper_name = "data_helper_rst.bin"
     data_helper.load_data_helper(os.path.join('../data/', helper_name))
-    # data_helper = None
     train_loader = get_train_loader(data_helper, config)
 
     os.makedirs('../data/model/', exist_ok=True)
