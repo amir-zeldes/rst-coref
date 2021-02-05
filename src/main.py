@@ -83,8 +83,8 @@ def get_discourse_parser(data_helper, config):
 
 def train_model_coref(data_helper, config):
     
-    helper_name = "data_helper_rst.bin"
-    data_helper.load_data_helper(os.path.join('../data/', helper_name))
+    HELPER_NAME = "data_helper_rst.bin"
+    data_helper.load_data_helper(HELPER_PATH)
     train_loader = get_train_loader(data_helper, config)
 
     os.makedirs('../data/model/', exist_ok=True)
@@ -109,9 +109,9 @@ if __name__ == '__main__':
     }
     
     data_helper = DataHelper()
-    helper_name = "data_helper_rst.bin"
-    # helper_name = f"{config[MODEL_NAME]}_data_helper_rst.bin"
-    helper_path = os.path.join('../data/', helper_name)
+
+    HELPER_NAME = f"{args.train_dir}_data_helper_rst.bin"
+    HELPER_PATH = os.path.join('../data/', HELPER_NAME)
     
     if args.prepare:
         # Create training data
@@ -121,14 +121,14 @@ if __name__ == '__main__':
         coref_trainer = Trainer(coref_model, [], [], [], debug=False)
         
         data_helper.create_data_helper(args.train_dir, config, coref_trainer)
-        data_helper.save_data_helper(helper_path)
+        data_helper.save_data_helper(HELPER_PATH)
             
     if args.train:
         train_model_coref(data_helper, config)
     
     if args.eval:
         # Evaluate models on the RST-DT test set
-        data_helper.load_data_helper(helper_path)
+        data_helper.load_data_helper(HELPER_PATH)
         
         parser = get_discourse_parser(data_helper, config)
         parser.load('../data/model/' + config[MODEL_NAME])
