@@ -5,6 +5,7 @@ from torch.nn.functional import softmax
 from transformers import BertTokenizer, BertModel
 import torch.nn as nn
 from ubc_coref.utils import *
+from utils.other import relation_map
 
 class NeuralClassifier(nn.Module):
     
@@ -39,7 +40,7 @@ class NeuralClassifier(nn.Module):
             nn.Linear(2584, self.config[HIDDEN_DIM]),
             nn.GELU(),
             nn.Dropout(0.2),
-            nn.Linear(self.config[HIDDEN_DIM], 19)
+            nn.Linear(self.config[HIDDEN_DIM], len(relation_map))
         )
             
     def init_embeddings(self):
