@@ -81,10 +81,10 @@ class DataHelper(object):
         self.all_clusters = []
         
         # Pre-generate clusters for all docs (to speed up training)
-        #with torch.no_grad():
-        #    for i, doc in enumerate(self.docs):
-        #        self.all_clusters.append(coref_trainer.predict_clusters(doc)[0])
-        #        print("Coref cluster for document: ", i)
+        with torch.no_grad():
+            for i, doc in enumerate(self.docs):
+                self.all_clusters.append(coref_trainer.predict_clusters(doc)[0])
+                print("Coref cluster for document: ", i)
             
     def save_data_helper(self, fname):
         print('Save data helper...')
