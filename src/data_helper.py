@@ -39,7 +39,8 @@ class DataHelper(object):
             eval_instance = fdis.replace('.dis', '.merge')
             doc.read_from_fmerge(eval_instance)
 
-            tok_edus = [nltk.word_tokenize(edu) for edu in doc.doc_edus]
+            # tok_edus = [nltk.word_tokenize(edu) for edu in doc.doc_edus]
+            tok_edus = [edu.split(" ") for edu in doc.doc_edus]
             tokens = flatten(tok_edus)
             
             # Coreference resolver document instance for coreference functionality

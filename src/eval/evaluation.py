@@ -48,7 +48,8 @@ class Evaluator(object):
             gold_rst = RstTree(eval_instance, fmerge)
             gold_rst.build()
             
-            tok_edus = [nltk.word_tokenize(edu) for edu in doc.doc_edus]
+            # tok_edus = [nltk.word_tokenize(edu) for edu in doc.doc_edus]
+            tok_edus = [edu.split(" ") for edu in doc.doc_edus]
             tokens = flatten(tok_edus)
 
             coref_document = Document(raw_text=None, tokens=tokens, sents=tok_edus, 
