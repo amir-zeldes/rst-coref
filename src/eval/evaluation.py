@@ -73,13 +73,12 @@ class Evaluator(object):
                 if not os.path.isdir('../data/predicted_trees'):
                     os.mkdir('../data/predicted_trees')
 
-                fbrackets = eval_instance.replace('.out.merge', '.brackets') \
-                                .replace("wsj", self.config[MODEL_NAME] + "_wsj") \
-                                .replace("test_dir", "predicted_trees")
+                filename = eval_instance.split(os.sep)[-1]
+                filepath = f'../data/predicted_trees/{self.config[MODEL_NAME]}_{filename}'
 
                 pred_brackets = pred_rst.bracketing()
                 # Write brackets into file
-                Evaluator.writebrackets(fbrackets, pred_brackets)
+                Evaluator.writebrackets(filepath, pred_brackets)
             # ----------------------------------------
             # Evaluate with gold RST tree
             met.eval(gold_rst, pred_rst)
