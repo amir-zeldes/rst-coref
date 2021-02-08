@@ -109,8 +109,9 @@ if __name__ == '__main__':
     print("Config:", config)
     
     data_helper = DataHelper()
-
-    HELPER_PATH = f"{args.train_dir}_data_helper_rst.bin"
+    train_dirname = (args.train_dir[:-1] if args.train_dir[-1] == os.sep else args.train_dir).split(os.sep)[-1]
+    HELPER_PATH = f"..{os.sep}data{os.sep}{train_dirname}_data_helper_rst.bin"
+    print("Helper path:", HELPER_PATH)
     
     if args.prepare:
         # Create training data
