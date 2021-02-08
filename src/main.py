@@ -110,7 +110,7 @@ if __name__ == '__main__':
     
     data_helper = DataHelper()
 
-    HELPER_NAME = "{args.train_dir}_data_helper_rst.bin"
+    HELPER_NAME = f"{args.train_dir}_data_helper_rst.bin"
     HELPER_PATH = os.path.join('../data/', HELPER_NAME)
     
     if args.prepare:
